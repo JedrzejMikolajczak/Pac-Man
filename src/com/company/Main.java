@@ -6,7 +6,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-
+enum Kierunek{
+    GORA,DOL,LEWO,PRAWO;
+}
 public class Main {
     public static double distance = 0;
 
@@ -15,9 +17,7 @@ public class Main {
         Scanner in = new Scanner(file);
 
     }
-    public enum Kierunek{
-        GORA,DOL,LEWO,PRAWO;
-    }
+
     public static void GetDistance(int x1, int y1, int x2, int y2){
         double a = ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
         distance = Math.sqrt(a);

@@ -14,7 +14,7 @@ public class Duszek {
     int PozYPixelduszka;
     int celX;
     int celY;
-    Main.Kierunek kierunek;
+    Kierunek kierunek;
     Stan stan;
 
     public JakiDuszek getJakiDuszek() {
@@ -73,11 +73,11 @@ public class Duszek {
         this.celY = celY;
     }
 
-    public Main.Kierunek getKierunek() {
+    public Kierunek getKierunek() {
         return kierunek;
     }
 
-    public void setKierunek(Main.Kierunek kierunek) {
+    public void setKierunek(Kierunek kierunek) {
         this.kierunek = kierunek;
     }
 
