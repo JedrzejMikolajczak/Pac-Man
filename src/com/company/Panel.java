@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import static com.company.Main.*;
+
 public class Panel extends JPanel implements KeyListener {
     public Panel(){
         addKeyListener(this);
