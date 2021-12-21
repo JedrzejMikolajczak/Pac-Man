@@ -1,12 +1,14 @@
 package com.company;
 
-enum JakiDuszek{
-    NIEBIESKI,ROZOWY,POMARANCZOWY,CZERWONY;
-}
-enum Stan{
-    CHASE,FRIGHTENED,EATEN,SCUTTER;
-}
 public class Duszek {
+
+    enum JakiDuszek{
+        NIEBIESKI,ROZOWY,POMARANCZOWY,CZERWONY;
+    }
+    enum Stan{
+        CHASE,FRIGHTENED,EATEN,SCUTTER;
+    }
+
     JakiDuszek jakiDuszek;
     int PozXduszka;
     int PozYduszka;
@@ -17,12 +19,12 @@ public class Duszek {
     Kierunek kierunek;
     Stan stan;
 
-    public JakiDuszek getJakiDuszek() {
-        return jakiDuszek;
+    public Duszek(JakiDuszek duszek){
+        jakiDuszek = duszek;
     }
 
-    public void setJakiDuszek(JakiDuszek jakiDuszek) {
-        this.jakiDuszek = jakiDuszek;
+    public JakiDuszek getJakiDuszek() {
+        return jakiDuszek;
     }
 
     public int getPozXduszka() {

@@ -10,24 +10,26 @@ enum Kierunek{
     GORA,DOL,LEWO,PRAWO;
 }
 public class Main {
-    public static double distance = 0;
-    public static int[][] plansza = new int[28][31];
+    public static int szerokoscPlanszy = 28;
+    public static int wysokoscPlanszy = 31;
+
+    public static int[][] plansza = new int[szerokoscPlanszy][wysokoscPlanszy];
     public static JFrame gra;
     public static Panel panel;
 
     public static void ReadFromFile() throws FileNotFoundException {
         File file = new File("Plansza.txt");
         Scanner in = new Scanner(file);
-        for (int y = 0; y < 31; y++) {
-            for (int x = 0; x < 28; x++) {
+        for (int y = 0; y < wysokoscPlanszy; y++) {
+            for (int x = 0; x < szerokoscPlanszy; x++) {
                 plansza[x][y] = in.nextInt();
             }
         }
     }
 
-    public static void GetDistance(int x1, int y1, int x2, int y2){
+    public static double GetDistance(int x1, int y1, int x2, int y2){
         double a = ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
-        distance = Math.sqrt(a);
+        return Math.sqrt(a);
     }
 
     public static void UtworzPanel(){
