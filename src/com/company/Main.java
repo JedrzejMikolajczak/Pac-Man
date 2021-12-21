@@ -50,7 +50,9 @@ public class Main {
         Scanner in = new Scanner(file);
         for (int y = 0; y < wysokoscPlanszy; y++) {
             for (int x = 0; x < szerokoscPlanszy; x++) {
-                planszaWartosci[x][y] = in.nextInt();
+                if(in.hasNext()) {
+                    planszaWartosci[x][y] = in.nextInt();
+                }
             }
         }
     }
