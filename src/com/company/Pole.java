@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Pole {
 
     enum RodzajPola{
@@ -10,6 +12,7 @@ public class Pole {
     Boolean czyDaSieWejsc;
     Boolean czyKropka;
     Boolean czyBoost;
+    ArrayList<Kierunek> kierunki;
 
     public Pole(RodzajPola pole, Boolean kropka, Boolean boost){
         rodzajPola = pole;

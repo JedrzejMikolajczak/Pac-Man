@@ -13,7 +13,8 @@ public class Main {
     public static int szerokoscPlanszy = 28;
     public static int wysokoscPlanszy = 31;
 
-    public static int[][] plansza = new int[szerokoscPlanszy][wysokoscPlanszy];
+    public static int[][] planszaWartosci = new int[szerokoscPlanszy][wysokoscPlanszy];
+    public static Pole[][] plansza = new Pole[szerokoscPlanszy][wysokoscPlanszy];
     public static JFrame gra;
     public static Panel panel;
 
@@ -22,7 +23,7 @@ public class Main {
         Scanner in = new Scanner(file);
         for (int y = 0; y < wysokoscPlanszy; y++) {
             for (int x = 0; x < szerokoscPlanszy; x++) {
-                plansza[x][y] = in.nextInt();
+                planszaWartosci[x][y] = in.nextInt();
             }
         }
     }
