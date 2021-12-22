@@ -40,7 +40,40 @@ public class Main {
     }
 
     public static void WypelnieniePlanszy() {
+        for (int y = 0; y < wysokoscPlanszy; y++) {
+            for (int x = 0; x < szerokoscPlanszy; x++) {
+                switch(planszaWartosci[x][y]) {
+                    case 1:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.DOLPRAWY, false, false, x, y);
+                        break;
+                    case 2:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.DOLLEWY, false, false, x, y);
+                        break;
+                    case 3:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.GORAPRAWY, false, false, x, y);
+                        break;
+                    case 4:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.GORALEWY, false, false, x, y);
+                        break;
+                    case 5:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.PUSTE, true, false, x, y);
+                        break;
+                    case 6:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.PUSTE, false, false, x, y);
+                        break;
+                    case 7:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.PUSTE, false, true, x, y);
+                        break;
+                    case 8:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.PIONOWA, false, false, x, y);
+                        break;
+                    case 9:
+                        plansza[x][y] = new Pole(Pole.RodzajPola.POZIOMA, false, false, x, y);
+                        break;
 
+                }
+            }
+        }
     }
 
     public static double GetDistance(int x1, int y1, int x2, int y2){

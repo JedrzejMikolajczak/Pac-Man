@@ -29,7 +29,6 @@ public class Panel extends JPanel implements KeyListener {
             for (int x = 0; x < 28; x++) {
                 switch (planszaWartosci[x][y]) {
                     case 1:
-                        g.drawImage(dolPrawy, )
                         break;
                     case 2:
                         break;
@@ -38,7 +37,6 @@ public class Panel extends JPanel implements KeyListener {
                     case 4:
                         break;
                     case 8:
-
                         break;
                     case 9:
                         break;
