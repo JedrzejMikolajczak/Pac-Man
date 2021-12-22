@@ -13,6 +13,7 @@ public class Main {
     public static int szerokoscPlanszy = 28;
     public static int wysokoscPlanszy = 31;
     public static int rozmiarPola = 16;
+    public static int skala = 2;
 
     public static int[][] planszaWartosci = new int[szerokoscPlanszy][wysokoscPlanszy];
     public static Pole[][] plansza = new Pole[szerokoscPlanszy][wysokoscPlanszy];

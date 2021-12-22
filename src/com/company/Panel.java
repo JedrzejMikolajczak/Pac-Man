@@ -28,19 +28,19 @@ public class Panel extends JPanel implements KeyListener {
         for (int y = 0; y < 31; y++) {
             for (int x = 0; x < 28; x++) {
                 switch (plansza[x][y].rodzajPola) {
-                    case PIONOWA -> g.drawImage(pionowa.getImage(), x * rozmiarPola, y * rozmiarPola, null);
-                    case POZIOMA -> g.drawImage(pozioma.getImage(), x * rozmiarPola, y * rozmiarPola, null);
-                    case DOLLEWY -> g.drawImage(dolLewy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
-                    case DOLPRAWY -> g.drawImage(dolPrawy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
-                    case GORALEWY -> g.drawImage(goraLewy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
-                    case GORAPRAWY -> g.drawImage(goraPrawy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                    case PIONOWA -> g.drawImage(pionowa.getImage(), x * rozmiarPola *skala, y * rozmiarPola*skala, skala*rozmiarPola, skala*rozmiarPola, null);
+                    case POZIOMA -> g.drawImage(pozioma.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala, skala*rozmiarPola, skala*rozmiarPola, null);
+                    case DOLLEWY -> g.drawImage(dolLewy.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
+                    case DOLPRAWY -> g.drawImage(dolPrawy.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
+                    case GORALEWY -> g.drawImage(goraLewy.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
+                    case GORAPRAWY -> g.drawImage(goraPrawy.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
                     case PUSTE -> {
                         if(plansza[x][y].czyBoost){
-                            g.drawImage(boost.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                            g.drawImage(boost.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
                         } else if(plansza[x][y].czyKropka) {
-                            g.drawImage(kropka.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                            g.drawImage(kropka.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
                         } else {
-                            g.drawImage(puste.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                            g.drawImage(puste.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
                         }
                     }
                 }
