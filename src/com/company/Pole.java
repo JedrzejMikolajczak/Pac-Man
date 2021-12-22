@@ -25,6 +25,7 @@ public class Pole {
             czyDaSieWejsc = true;
         else
             czyDaSieWejsc = false;
+        kierunki = new ArrayList<>();
         ustawKierunki(xPola, yPola);
     }
 

@@ -27,19 +27,22 @@ public class Panel extends JPanel implements KeyListener {
         super.paintComponent(g);
         for (int y = 0; y < 31; y++) {
             for (int x = 0; x < 28; x++) {
-                switch (planszaWartosci[x][y]) {
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    case 4:
-                        break;
-                    case 8:
-                        break;
-                    case 9:
-                        break;
+                switch (plansza[x][y].rodzajPola) {
+                    case PIONOWA -> g.drawImage(pionowa.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                    case POZIOMA -> g.drawImage(pozioma.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                    case DOLLEWY -> g.drawImage(dolLewy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                    case DOLPRAWY -> g.drawImage(dolPrawy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                    case GORALEWY -> g.drawImage(goraLewy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                    case GORAPRAWY -> g.drawImage(goraPrawy.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                    case PUSTE -> {
+                        if(plansza[x][y].czyBoost){
+                            g.drawImage(boost.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                        } else if(plansza[x][y].czyKropka) {
+                            g.drawImage(kropka.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                        } else {
+                            g.drawImage(puste.getImage(), x * rozmiarPola, y * rozmiarPola, null);
+                        }
+                    }
                 }
             }
         }

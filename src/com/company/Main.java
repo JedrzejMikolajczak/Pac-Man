@@ -12,6 +12,7 @@ enum Kierunek{
 public class Main {
     public static int szerokoscPlanszy = 28;
     public static int wysokoscPlanszy = 31;
+    public static int rozmiarPola = 16;
 
     public static int[][] planszaWartosci = new int[szerokoscPlanszy][wysokoscPlanszy];
     public static Pole[][] plansza = new Pole[szerokoscPlanszy][wysokoscPlanszy];
@@ -98,7 +99,8 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         ReadFromFile();
-        //UtworzPanel();
+        WypelnieniePlanszy();
+        UtworzPanel();
         for (int y = 0; y < 31; y++) {
             for (int x = 0; x < 28; x++) {
                 System.out.print(planszaWartosci[x][y] + " ");
