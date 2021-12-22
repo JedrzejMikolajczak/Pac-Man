@@ -25,6 +25,26 @@ public class Panel extends JPanel implements KeyListener {
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        for (int y = 0; y < 31; y++) {
+            for (int x = 0; x < 28; x++) {
+                switch (planszaWartosci[x][y]) {
+                    case 1:
+                        g.drawImage(dolPrawy, )
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        break;
+                    case 8:
+
+                        break;
+                    case 9:
+                        break;
+                }
+            }
+        }
     }
 
     @Override
