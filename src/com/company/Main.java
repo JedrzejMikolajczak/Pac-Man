@@ -19,33 +19,15 @@ public class Main {
     public static Panel panel;
 
     public static void ReadFromFile() throws FileNotFoundException {
-        /* 0 - podwójne dół- prawo
-        1 - podwójne poziome górne
-        2 - Podwójne rozgałęźnik lewo-prawo-dół
-        3 - podwójne rogałęźnik prawo-lewo-dół
-        4 - podwójne dół-lewo
-        5 - podwójne pionowe - lewo
-        6 - puste
-        7 - pojedyńcze pionowe
-        8 - pojedyńcze góra-prawo
-        9 - pojedyńcze dół-prawo
-        10 - pojedyńcze poziome
-        11 - pojedyńcze dół-lewo
-        12 - pojedyńcze góra-lewo
-        13 - podwójne góra-prawo
-        14 - podwójne góra-lewo
-        15 - prostokątne dół-prawo
-        16 - prostokątne poziome górne
-        17 - biała bramka
-        18 - prostokątne dół-lewo
-        19 - prostokątne pionowe lewe
-        20 - prostokątne pionowe prawe
-        21 - podwójne poziome dolne
-        22 - prostokątne góra-prawo
-        23 - prostkątne poziome dolne
-        24 - prostokątne góra-lewo
-        25 - podwójne pionowe - prawo */
-
+        /* 1- dół prawo
+           2- dół lewo
+           3- góra prawo
+           4- góra lewo
+           5- mała kropka
+           6- pusta
+           7- duża kropka
+           8- pion
+           9- poziom */
         File file = new File("Plansza.txt");
         Scanner in = new Scanner(file);
         for (int y = 0; y < wysokoscPlanszy; y++) {
