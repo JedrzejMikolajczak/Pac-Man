@@ -38,7 +38,7 @@ public class Panel extends JPanel implements KeyListener {
                         if(plansza[x][y].czyBoost){
                             g.drawImage(boost.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
                         } else if(plansza[x][y].czyKropka) {
-                            g.drawImage(kropka.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
+                            g.drawImage(kropka.getImage(), x * rozmiarPola, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
                         } else {
                             g.drawImage(puste.getImage(), x * rozmiarPola*skala, y * rozmiarPola*skala,skala*rozmiarPola, skala*rozmiarPola, null);
                         }

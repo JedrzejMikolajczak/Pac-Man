@@ -10,10 +10,10 @@ enum Kierunek{
     GORA,DOL,LEWO,PRAWO;
 }
 public class Main {
-    public static int szerokoscPlanszy = 28;
-    public static int wysokoscPlanszy = 31;
-    public static int rozmiarPola = 16;
-    public static int skala = 2;
+    public static final int szerokoscPlanszy = 28;
+    public static final int wysokoscPlanszy = 31;
+    public static final int rozmiarPola = 16;
+    public static final int skala = 2;
 
     public static int[][] planszaWartosci = new int[szerokoscPlanszy][wysokoscPlanszy];
     public static Pole[][] plansza = new Pole[szerokoscPlanszy][wysokoscPlanszy];
