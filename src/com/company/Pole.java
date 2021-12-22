@@ -29,12 +29,13 @@ public class Pole {
     }
 
     private void ustawKierunki(int xPola, int yPola){
+        if (planszaWartosci[xPola][yPola] == 5 || planszaWartosci[xPola][yPola] == 6 || planszaWartosci[xPola][yPola] == 7)
         for (int x = -1; x <= 1; x++) {
             for (int y = -1; y < 1; y++) {
                 if ((x != 0 && y != 0) || (x == 0 && xPola == 0))
                     continue;
                 if (czyPoleIstnieje(xPola + x, yPola + y))
-                    if (planszaWartosci[xPola + x][yPola + y] == 0 || planszaWartosci[xPola + x][yPola + y] == 1 || planszaWartosci[xPola + x][yPola + y] == 2) { // TODO Wartośći do poprawienia, bo w pliku są nie poprawne (jest ich za dużo)
+                    if (planszaWartosci[xPola + x][yPola + y] == 5 || planszaWartosci[xPola + x][yPola + y] == 6 || planszaWartosci[xPola + x][yPola + y] == 7) {
                         if (x > 0)
                             kierunki.add(Kierunek.PRAWO);
                         else if (x < 0)
