@@ -79,6 +79,12 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         ReadFromFile();
-        UtworzPanel();
+        //UtworzPanel();
+        for (int y = 0; y < 31; y++) {
+            for (int x = 0; x < 28; x++) {
+                System.out.print(planszaWartosci[x][y] + " ");
+            }
+            System.out.println();
+        }
     }
 }
