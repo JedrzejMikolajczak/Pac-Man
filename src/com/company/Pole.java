@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import static com.company.Main.*;
 
 public class Pole {
 
@@ -13,8 +14,10 @@ public class Pole {
     Boolean czyKropka;
     Boolean czyBoost;
     ArrayList<Kierunek> kierunki;
+    int xSiatka;
+    int ySiatka;
 
-    public Pole(RodzajPola pole, Boolean kropka, Boolean boost){
+    public Pole(RodzajPola pole, Boolean kropka, Boolean boost, int xPola, int yPola){
         rodzajPola = pole;
         czyKropka = kropka;
         czyBoost = boost;
@@ -22,6 +25,34 @@ public class Pole {
             czyDaSieWejsc = true;
         else
             czyDaSieWejsc = false;
+        ustawKierunki(xPola, yPola);
+    }
+
+    private void ustawKierunki(int xPola, int yPola){
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y < 1; y++) {
+                if ((x != 0 && y != 0) || (x == 0 && xPola == 0))
+                    continue;
+                if (czyPoleIstnieje(xPola + x, yPola + y))
+                    if (planszaWartosci[xPola + x][yPola + y] == 0 || planszaWartosci[xPola + x][yPola + y] == 1 || planszaWartosci[xPola + x][yPola + y] == 2) { // TODO Wartośći do poprawienia, bo w pliku są nie poprawne (jest ich za dużo)
+                        if (x > 0)
+                            kierunki.add(Kierunek.PRAWO);
+                        else if (x < 0)
+                            kierunki.add(Kierunek.LEWO);
+                        else if (y > 0)
+                            kierunki.add(Kierunek.GORA);
+                        else if (y < 0)
+                            kierunki.add(Kierunek.DOL);
+
+                    }
+            }
+        }
+    }
+
+    public static Boolean czyPoleIstnieje(int x, int y) {
+        if (x >= 0 || y >= 0 || x < szerokoscPlanszy || y < wysokoscPlanszy)
+            return true;
+        return false;
     }
 
     // 0 - nic nie zjadl
@@ -39,6 +70,18 @@ public class Pole {
             return 2;
         }
         return 0;
+    }
+
+    public ArrayList<Kierunek> getKierunki() {
+        return kierunki;
+    }
+
+    public int getxSiatka() {
+        return xSiatka;
+    }
+
+    public int getySiatka() {
+        return ySiatka;
     }
 
     public RodzajPola getRodzajPola() {
