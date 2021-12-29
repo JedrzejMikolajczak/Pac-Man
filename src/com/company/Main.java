@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
+import static com.company.Duszek.*;
 
 enum Kierunek{
     GORA,DOL,LEWO,PRAWO;
@@ -14,6 +16,8 @@ public class Main {
     public static final int wysokoscPlanszy = 31;
     public static final int rozmiarPola = 16;
     public static final int skala = 2;
+
+    static ArrayList<JakiDuszek> DuszekAR = new ArrayList<>();
 
     public static int[][] planszaWartosci = new int[szerokoscPlanszy][wysokoscPlanszy];
     public static Pole[][] plansza = new Pole[szerokoscPlanszy][wysokoscPlanszy];
@@ -78,6 +82,14 @@ public class Main {
         }
     }
 
+    public static void TworzenieDuszkow()
+    {
+        DuszekAR.add(JakiDuszek.CZERWONY);
+        DuszekAR.add(JakiDuszek.POMARANCZOWY);
+        DuszekAR.add(JakiDuszek.NIEBIESKI);
+        DuszekAR.add(JakiDuszek.ROZOWY);
+    }
+
     public static double GetDistance(int x1, int y1, int x2, int y2){
         double a = ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
         return Math.sqrt(a);
@@ -108,5 +120,6 @@ public class Main {
             }
             System.out.println();
         }
+        TworzenieDuszkow();
     }
 }

@@ -1,11 +1,22 @@
 package com.company;
+import static com.company.Main.*;
+import static com.company.Duszek.*;
 
 public class PacMan {
-    int PozXPacMana;
-    int PozYPacMana;
+    static int PozXPacMana;
+    static int PozYPacMana;
+    static int Punkty;
+
+    static float PredkoscRuchuPacMana; //specjalnie przygotowane dla grupy 2:D
+
     int PozXPixelPacMana;
     int PozYPixelPacMana;
+
+
+
+
     Kierunek kierunek;
+
 
     public int getPozXPacMana() { return PozXPacMana; }
 
@@ -29,6 +40,16 @@ public class PacMan {
 
     public void setKierunek(Kierunek kierunek) {
         this.kierunek = kierunek;
+    }
+
+    public static void PunktyMetod()
+    {
+        if(plansza[PozXPacMana][PozYPacMana].czyKropka) {Punkty++; plansza[PozXPacMana][PozYPacMana].czyKropka = false;}
+    }
+
+    public static void StartBoost()
+    {
+        if(plansza[PozXPacMana][PozYPacMana].czyBoost) {PredkoscRuchuPacMana = 2f;}
     }
 
 
