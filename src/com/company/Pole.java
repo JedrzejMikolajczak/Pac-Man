@@ -35,6 +35,8 @@ public class Pole {
         else
             czyDaSieWejsc = false;
         kierunki = new ArrayList<>();
+        xSiatka = xPola;
+        ySiatka = yPola;
         ustawKierunki(xPola, yPola);
     }
 

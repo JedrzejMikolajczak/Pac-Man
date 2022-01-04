@@ -7,7 +7,7 @@ import static com.company.Main.*;
 
 public class Pathfinding {
 
-    static Pole poczotkowePole;
+    static Pole poczatkowePole;
     static Pole koncowePole;
 
     static ArrayList<Pole> otwartySet;
@@ -15,13 +15,13 @@ public class Pathfinding {
 
     static ArrayList<Pole> znajdzSciezke(int startX, int startY, int celX, int celY){
 
-        poczotkowePole = plansza[startX][startY];
+        poczatkowePole = plansza[startX][startY];
         koncowePole = plansza[celX][celY];
 
         otwartySet = new ArrayList<Pole>();
         zamknietySet = new HashSet<Pole>();
 
-        otwartySet.add(poczotkowePole);
+        otwartySet.add(poczatkowePole);
 
         while (!otwartySet.isEmpty()) {
             Pole aktualnePole = otwartySet.get(0);
@@ -58,7 +58,7 @@ public class Pathfinding {
         ArrayList<Pole> sciezka = new ArrayList<Pole>();
         Pole aktualnePole = koncowePole;
 
-        while (aktualnePole != poczotkowePole) {
+        while (aktualnePole != poczatkowePole) {
             sciezka.add(aktualnePole);
             aktualnePole = aktualnePole.rodzic;
         }
@@ -70,6 +70,6 @@ public class Pathfinding {
         int dstX = Math.abs(poleA.xSiatka - poleB.xSiatka);
         int dstY = Math.abs(poleA.ySiatka - poleB.ySiatka);
 
-            return 10 * (dstX + dstY);
+        return 10 * (dstX + dstY);
     }
 }
