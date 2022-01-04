@@ -17,6 +17,15 @@ public class Pole {
     int xSiatka;
     int ySiatka;
 
+    public int gCost;
+    public int hCost;
+
+    public Pole rodzic;
+
+    public int fCost() {
+        return gCost + hCost;
+    }
+
     public Pole(RodzajPola pole, Boolean kropka, Boolean boost, int xPola, int yPola){
         rodzajPola = pole;
         czyKropka = kropka;

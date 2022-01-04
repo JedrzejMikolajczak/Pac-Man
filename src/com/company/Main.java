@@ -95,6 +95,24 @@ public class Main {
         return Math.sqrt(a);
     }
 
+    public static ArrayList<Pole> getSasiadow(Pole pole) {
+        ArrayList<Pole> sasiedzi = new ArrayList<>();
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (x == 0 && y == 0 || (x != 0 && y != 0))
+                    continue;
+
+                int sprawdzX = pole.xSiatka + x;
+                int sprawdzY = pole.ySiatka + y;
+
+                if (Pole.czyPoleIstnieje(sprawdzX, sprawdzY)) {
+                    sasiedzi.add(plansza[sprawdzX][sprawdzY]);
+                }
+            }
+        }
+        return sasiedzi;
+    }
+
     public static void UtworzPanel(){
         gra = new JFrame();
         panel = new Panel();
@@ -114,12 +132,12 @@ public class Main {
         ReadFromFile();
         WypelnieniePlanszy();
         UtworzPanel();
-        for (int y = 0; y < 31; y++) {
+        /*for (int y = 0; y < 31; y++) {
             for (int x = 0; x < 28; x++) {
                 System.out.print(planszaWartosci[x][y] + " ");
             }
             System.out.println();
-        }
+        }*/
         TworzenieDuszkow();
     }
 }
