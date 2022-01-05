@@ -2,6 +2,7 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Main {
     public static JFrame gra;
     public static Panel panel;
 
-    public static PacMan pacman = new PacMan();
+    public static PacMan pacman = new PacMan(16, 16, Kierunek.PRAWO);
 
     public static void ReadFromFile() throws FileNotFoundException {
         /* 1- dół prawo
@@ -128,6 +129,7 @@ public class Main {
         gra.setLocationRelativeTo(null);
         gra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gra.setVisible(true);
+        gra.addKeyListener(panel);
     }
 
     public static void main(String[] args) throws FileNotFoundException {

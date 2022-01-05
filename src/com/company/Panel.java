@@ -53,6 +53,7 @@ public class Panel extends JPanel implements KeyListener {
                 }
             }
         }
+        PrzesunPacMana();
         g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
 /*
         ArrayList<Pole> path = new ArrayList<Pole>();
@@ -67,14 +68,30 @@ public class Panel extends JPanel implements KeyListener {
                     g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
             }
         }
+        */
         try {
-            Thread.sleep(100);
+            Thread.sleep(33);
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
         repaint();
- */
     }
+
+    public static void PrzesunPacMana(){
+
+        switch (pacman.getKierunek()) {
+            case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% szerokoscPlanszy == 0)
+                pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + pacman.PredkoscRuchuPacMana);}
+            case LEWO -> {if(plansza[pacman.getPozXPacMana() - 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% szerokoscPlanszy == 0)
+                pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() - pacman.PredkoscRuchuPacMana);}
+            case DOL -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() + 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% szerokoscPlanszy == 0)
+                pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() + pacman.PredkoscRuchuPacMana);}
+            case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% szerokoscPlanszy == 0)
+                pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() - pacman.PredkoscRuchuPacMana);}
+
+        }
+    }
+
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -87,19 +104,23 @@ public class Panel extends JPanel implements KeyListener {
             case KeyEvent.VK_D:
                 if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.PRAWO)) {
                     pacman.setKierunek(Kierunek.PRAWO);
-                }
+               }
+                break;
             case KeyEvent.VK_A:
                 if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.LEWO)) {
                     pacman.setKierunek(Kierunek.LEWO);
                 }
+                break;
             case KeyEvent.VK_W:
                 if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.GORA)) {
                     pacman.setKierunek(Kierunek.GORA);
                 }
+                break;
             case KeyEvent.VK_S:
                 if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.DOL)) {
                     pacman.setKierunek(Kierunek.DOL);
                 }
+                break;
         }
 
     }

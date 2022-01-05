@@ -7,7 +7,7 @@ public class PacMan {
     static int PozYPacMana;
     static int Punkty;
 
-    static float PredkoscRuchuPacMana; //specjalnie przygotowane dla grupy 2:D
+    static int PredkoscRuchuPacMana = 3;
 
     int PozXPixelPacMana;
     int PozYPixelPacMana;
@@ -15,6 +15,14 @@ public class PacMan {
 
     Kierunek kierunek;
 
+
+    public PacMan(int pozXPixelPacMana, int pozYPixelPacMana, Kierunek kierunek) {
+        PozXPixelPacMana = pozXPixelPacMana;
+        PozYPixelPacMana = pozYPixelPacMana;
+        PozXPacMana = pozXPixelPacMana/ rozmiarPola;
+        PozYPacMana = pozYPixelPacMana/ rozmiarPola;
+        this.kierunek = kierunek;
+    }
 
     public int getPozXPacMana() { return PozXPacMana; }
 
@@ -45,10 +53,7 @@ public class PacMan {
         if(plansza[PozXPacMana][PozYPacMana].czyKropka) {Punkty++; plansza[PozXPacMana][PozYPacMana].czyKropka = false;}
     }
 
-    public static void StartBoost()
-    {
-        if(plansza[PozXPacMana][PozYPacMana].czyBoost) {PredkoscRuchuPacMana = 2f;}
-    }
+
 
 
 }
