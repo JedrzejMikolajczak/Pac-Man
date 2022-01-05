@@ -19,6 +19,7 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon goraPrawy = new ImageIcon("src/Grafika/goraPrawy.png");
     ImageIcon dolLewy = new ImageIcon("src/Grafika/dolLewy.png");
     ImageIcon dolPrawy = new ImageIcon("src/Grafika/dolPrawy.png");
+    ImageIcon pacmanpng = new ImageIcon("src/Grafika/pacman.png");
 
     ImageIcon dobre = new ImageIcon("src/Grafika/dobre.png");
     ImageIcon zle = new ImageIcon("src/Grafika/zle.png");
@@ -52,6 +53,7 @@ public class Panel extends JPanel implements KeyListener {
                 }
             }
         }
+        g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
 /*
         ArrayList<Pole> path = new ArrayList<Pole>();
         path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
