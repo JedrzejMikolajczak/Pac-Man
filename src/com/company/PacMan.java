@@ -13,8 +13,6 @@ public class PacMan {
     int PozYPixelPacMana;
 
 
-
-
     Kierunek kierunek;
 
 

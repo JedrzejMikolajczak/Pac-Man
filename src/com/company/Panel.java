@@ -81,6 +81,24 @@ public class Panel extends JPanel implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_D:
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.PRAWO)) {
+                    pacman.setKierunek(Kierunek.PRAWO);
+                }
+            case KeyEvent.VK_A:
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.LEWO)) {
+                    pacman.setKierunek(Kierunek.LEWO);
+                }
+            case KeyEvent.VK_W:
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.GORA)) {
+                    pacman.setKierunek(Kierunek.GORA);
+                }
+            case KeyEvent.VK_S:
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.DOL)) {
+                    pacman.setKierunek(Kierunek.DOL);
+                }
+        }
 
     }
 
