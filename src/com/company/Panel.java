@@ -53,6 +53,15 @@ public class Panel extends JPanel implements KeyListener {
                 }
             }
         }
+
+        //Siatka do debugowania
+        for (int i = 0; i < szerokoscPlanszy; i++) {
+            g.drawLine(i*skala*rozmiarPola,0,i*skala*rozmiarPola,wysokoscPlanszy*rozmiarPola*skala);
+        }
+        for (int i = 0; i < wysokoscPlanszy; i++) {
+            g.drawLine(0, i*skala*rozmiarPola,szerokoscPlanszy*rozmiarPola*skala, i*rozmiarPola*skala);
+        }
+
         PrzesunPacMana();
         g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
 /*
