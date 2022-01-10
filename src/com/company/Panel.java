@@ -87,8 +87,6 @@ public class Panel extends JPanel implements KeyListener {
 
     public static void PrzesunPacMana(){
 
-
-
         switch (pacman.getKierunek()) {
             case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% szerokoscPlanszy == 0)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + pacman.PredkoscRuchuPacMana);}

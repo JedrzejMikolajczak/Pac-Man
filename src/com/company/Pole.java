@@ -53,9 +53,9 @@ public class Pole {
                         else if (x < 0)
                             kierunki.add(Kierunek.LEWO);
                         else if (y > 0)
-                            kierunki.add(Kierunek.GORA);
-                        else if (y < 0)
                             kierunki.add(Kierunek.DOL);
+                        else if (y < 0)
+                            kierunki.add(Kierunek.GORA);
 
                     }
             }
