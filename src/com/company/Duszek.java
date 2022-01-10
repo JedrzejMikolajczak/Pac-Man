@@ -9,15 +9,15 @@ public class Duszek {
         CHASE,FRIGHTENED,EATEN,SCUTTER;
     }
 
-    JakiDuszek jakiDuszek;
-    int PozXduszka;
-    int PozYduszka;
-    int PozXPixelduszka;
-    int PozYPixelduszka;
-    int celX;
-    int celY;
-    Kierunek kierunek;
-    Stan stan;
+    private JakiDuszek jakiDuszek;
+    private int PozXduszka;
+    private int PozYduszka;
+    private int PozXPixelduszka;
+    private int PozYPixelduszka;
+    private int celX;
+    private int celY;
+    private Kierunek kierunek;
+    private Stan stan;
 
     public Duszek(JakiDuszek duszek){
         jakiDuszek = duszek;

@@ -9,13 +9,13 @@ public class Pole {
         POZIOMA, PIONOWA, GORALEWY, GORAPRAWY, DOLLEWY, DOLPRAWY, PUSTE
     }
 
-    RodzajPola rodzajPola;
-    Boolean czyDaSieWejsc;
-    Boolean czyKropka;
-    Boolean czyBoost;
-    ArrayList<Kierunek> kierunki;
-    int xSiatka;
-    int ySiatka;
+    private RodzajPola rodzajPola;
+    private Boolean czyDaSieWejsc;
+    private Boolean czyKropka;
+    private Boolean czyBoost;
+    private ArrayList<Kierunek> kierunki;
+    final int xSiatka;
+    final int ySiatka;
 
     public int gCost;
     public int hCost;

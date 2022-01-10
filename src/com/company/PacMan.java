@@ -3,14 +3,14 @@ import static com.company.Main.*;
 import static com.company.Duszek.*;
 
 public class PacMan {
-    static int PozXPacMana;
-    static int PozYPacMana;
-    static int Punkty;
+    private static int PozXPacMana;
+    private static int PozYPacMana;
+    private static int Punkty;
 
     static int PredkoscRuchuPacMana = 3;
 
-    int PozXPixelPacMana;
-    int PozYPixelPacMana;
+    private int PozXPixelPacMana;
+    private int PozYPixelPacMana;
 
 
     Kierunek kierunek;
@@ -50,7 +50,7 @@ public class PacMan {
 
     public static void PunktyMetod()
     {
-        if(plansza[PozXPacMana][PozYPacMana].czyKropka) {Punkty++; plansza[PozXPacMana][PozYPacMana].czyKropka = false;}
+        if(plansza[PozXPacMana][PozYPacMana].getCzyKropka()) {Punkty++;}
     }
 
 

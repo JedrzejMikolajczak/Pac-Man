@@ -7,11 +7,11 @@ import static com.company.Main.*;
 
 public class Pathfinding {
 
-    static Pole poczatkowePole;
-    static Pole koncowePole;
+    private static Pole poczatkowePole;
+    private static Pole koncowePole;
 
-    static ArrayList<Pole> otwartySet;
-    static HashSet<Pole> zamknietySet;
+    private static ArrayList<Pole> otwartySet;
+    private static HashSet<Pole> zamknietySet;
 
     static ArrayList<Pole> znajdzSciezke(int startX, int startY, int celX, int celY){
 
@@ -37,7 +37,7 @@ public class Pathfinding {
                 return oddtworzSiezke();
             }
             for (Pole sasiad : getSasiadow(aktualnePole)) {
-                if (!sasiad.czyDaSieWejsc || zamknietySet.contains(sasiad))
+                if (!sasiad.getCzyDaSieWejsc() || zamknietySet.contains(sasiad))
                     continue;
                 int nowyKosztRuchuDoSasiada = aktualnePole.gCost + getOdleglosc(aktualnePole, sasiad);
                 if (nowyKosztRuchuDoSasiada < sasiad.gCost || !otwartySet.contains(sasiad)) {

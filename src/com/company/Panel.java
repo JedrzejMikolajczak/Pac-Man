@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
 
 import static com.company.Main.*;
 
@@ -34,7 +33,7 @@ public class Panel extends JPanel implements KeyListener {
         super.paintComponent(g);
         for (int y = 0; y < wysokoscPlanszy; y++) {
             for (int x = 0; x < szerokoscPlanszy; x++) {
-                switch (plansza[x][y].rodzajPola) {
+                switch (plansza[x][y].getRodzajPola()) {
                     case PIONOWA -> g.drawImage(pionowa.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
                     case POZIOMA -> g.drawImage(pozioma.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
                     case DOLLEWY -> g.drawImage(dolLewy.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
@@ -42,9 +41,9 @@ public class Panel extends JPanel implements KeyListener {
                     case GORALEWY -> g.drawImage(goraLewy.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
                     case GORAPRAWY -> g.drawImage(goraPrawy.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
                     case PUSTE -> {
-                        if (plansza[x][y].czyBoost) {
+                        if (plansza[x][y].getCzyBoost()) {
                             g.drawImage(boost.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
-                        } else if (plansza[x][y].czyKropka) {
+                        } else if (plansza[x][y].getCzyKropka()) {
                             g.drawImage(kropka.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
                         } else {
                             g.drawImage(puste.getImage(), x * rozmiarPola * skala, y * rozmiarPola * skala, skala * rozmiarPola, skala * rozmiarPola, null);
@@ -88,6 +87,8 @@ public class Panel extends JPanel implements KeyListener {
 
     public static void PrzesunPacMana(){
 
+
+
         switch (pacman.getKierunek()) {
             case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% szerokoscPlanszy == 0)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + pacman.PredkoscRuchuPacMana);}
@@ -111,22 +112,22 @@ public class Panel extends JPanel implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyCode()) {
             case KeyEvent.VK_D:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.PRAWO)) {
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.PRAWO)) {
                     pacman.setKierunek(Kierunek.PRAWO);
                }
                 break;
             case KeyEvent.VK_A:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.LEWO)) {
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.LEWO)) {
                     pacman.setKierunek(Kierunek.LEWO);
                 }
                 break;
             case KeyEvent.VK_W:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.GORA)) {
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.GORA)) {
                     pacman.setKierunek(Kierunek.GORA);
                 }
                 break;
             case KeyEvent.VK_S:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].kierunki.contains(Kierunek.DOL)) {
+                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.DOL)) {
                     pacman.setKierunek(Kierunek.DOL);
                 }
                 break;
