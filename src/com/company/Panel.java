@@ -88,13 +88,13 @@ public class Panel extends JPanel implements KeyListener {
     public static void PrzesunPacMana(){
 
         switch (pacman.getKierunek()) {
-            case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% szerokoscPlanszy == 0)
+            case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + pacman.PredkoscRuchuPacMana);}
-            case LEWO -> {if(plansza[pacman.getPozXPacMana() - 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% szerokoscPlanszy == 0)
+            case LEWO -> {if(plansza[pacman.getPozXPacMana() - 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() - pacman.PredkoscRuchuPacMana);}
-            case DOL -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() + 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% szerokoscPlanszy == 0)
+            case DOL -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() + 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() + pacman.PredkoscRuchuPacMana);}
-            case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% szerokoscPlanszy == 0)
+            case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() - pacman.PredkoscRuchuPacMana);}
 
         }
