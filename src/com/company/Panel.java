@@ -92,9 +92,9 @@ public class Panel extends JPanel implements KeyListener {
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + pacman.PredkoscRuchuPacMana);}
             case LEWO -> {if(plansza[pacman.getPozXPacMana() - 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() - pacman.PredkoscRuchuPacMana);}
-            case DOL -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() + 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
+            case DOL -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() + 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% rozmiarPola > 2)
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() + pacman.PredkoscRuchuPacMana);}
-            case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
+            case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% rozmiarPola > 2)
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() - pacman.PredkoscRuchuPacMana);}
 
         }
