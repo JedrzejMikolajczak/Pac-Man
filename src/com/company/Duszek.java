@@ -49,6 +49,15 @@ public class Duszek {
         }
         PozXduszka = PozXPixelduszka/rozmiarPola;
         PozYduszka = PozYPixelduszka/rozmiarPola;
+
+        if (roznicaX > 0 && roznicaY == 0)
+            kierunek = Kierunek.PRAWO;
+        if (roznicaX < 0 && roznicaY == 0)
+            kierunek = Kierunek.LEWO;
+        if (roznicaX == 0 && roznicaY < 0)
+            kierunek = Kierunek.GORA;
+        if (roznicaX == 0 && roznicaY > 0)
+            kierunek = Kierunek.DOL;
     }
 
     public void idzDoCelu(ArrayList<Pole> sciezka){
