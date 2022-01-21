@@ -2,7 +2,6 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ public class Main {
     public static final int rozmiarPola = 16;
     public static final int skala = 2;
 
-    static ArrayList<JakiDuszek> DuszekAR = new ArrayList<>();
+    public static ArrayList<Duszek> DuszekAR = new ArrayList<>();
 
     public static int[][] planszaWartosci = new int[szerokoscPlanszy][wysokoscPlanszy];
     public static Pole[][] plansza = new Pole[szerokoscPlanszy][wysokoscPlanszy];
@@ -87,10 +86,10 @@ public class Main {
 
     public static void TworzenieDuszkow()
     {
-        DuszekAR.add(JakiDuszek.CZERWONY);
-        DuszekAR.add(JakiDuszek.POMARANCZOWY);
-        DuszekAR.add(JakiDuszek.NIEBIESKI);
-        DuszekAR.add(JakiDuszek.ROZOWY);
+        DuszekAR.add(new Duszek(JakiDuszek.CZERWONY));
+        DuszekAR.add(new Duszek(JakiDuszek.POMARANCZOWY));
+        DuszekAR.add(new Duszek(JakiDuszek.NIEBIESKI));
+        DuszekAR.add(new Duszek(JakiDuszek.ROZOWY));
     }
 
     public static double GetDistance(int x1, int y1, int x2, int y2){
@@ -143,5 +142,14 @@ public class Main {
             System.out.println();
         }*/
         TworzenieDuszkow();
+        while (true){
+            //Update
+            Duszek.ruszDuszkami();
+            try {
+                Thread.sleep(16);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+        }
     }
 }

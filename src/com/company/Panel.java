@@ -20,6 +20,8 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon dolPrawy = new ImageIcon("src/Grafika/dolPrawy.png");
     ImageIcon pacmanpng = new ImageIcon("src/Grafika/pacman.png");
 
+    ImageIcon czerwonyDuszek = new ImageIcon("src/Grafika/czerwonyDuszek.png");
+
     ImageIcon dobre = new ImageIcon("src/Grafika/dobre.png");
     ImageIcon zle = new ImageIcon("src/Grafika/zle.png");
     ImageIcon sciezka = new ImageIcon("src/Grafika/path.png");
@@ -77,6 +79,7 @@ public class Panel extends JPanel implements KeyListener {
             }
         }
         */
+        g.drawImage(czerwonyDuszek.getImage(), DuszekAR.get(0).getPozXPixelduszka() * skala, DuszekAR.get(0).getPozYPixelduszka() * skala, (DuszekAR.get(0).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(0).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
         try {
             Thread.sleep(33);
         } catch (InterruptedException ex) {
@@ -112,7 +115,7 @@ public class Panel extends JPanel implements KeyListener {
             case KeyEvent.VK_D:
                 if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.PRAWO)) {
                     pacman.setKierunek(Kierunek.PRAWO);
-               }
+                }
                 break;
             case KeyEvent.VK_A:
                 if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.LEWO)) {

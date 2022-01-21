@@ -34,11 +34,17 @@ public class PacMan {
 
     public int getPozXPixelPacMana() { return PozXPixelPacMana; }
 
-    public void setPozXPixelPacMana(int pozXPixelPacMana) { PozXPixelPacMana = pozXPixelPacMana; PozXPacMana = PozXPixelPacMana / rozmiarPola;}
+    public void setPozXPixelPacMana(int pozXPixelPacMana) {
+        PozXPixelPacMana = pozXPixelPacMana;
+        PozXPacMana = PozXPixelPacMana / rozmiarPola;
+    }
 
     public int getPozYPixelPacMana() { return PozYPixelPacMana; }
 
-    public void setPozYPixelPacMana(int pozYPixelPacMana) { PozYPixelPacMana = pozYPixelPacMana; PozYPacMana = PozYPixelPacMana / rozmiarPola;}
+    public void setPozYPixelPacMana(int pozYPixelPacMana) {
+        PozYPixelPacMana = pozYPixelPacMana;
+        PozYPacMana = PozYPixelPacMana / rozmiarPola;
+    }
 
     public Kierunek getKierunek() {
         return kierunek;
