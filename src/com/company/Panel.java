@@ -63,22 +63,21 @@ public class Panel extends JPanel implements KeyListener {
             g.drawLine(0, i*skala*rozmiarPola,szerokoscPlanszy*rozmiarPola*skala, i*rozmiarPola*skala);
         }
 
-        //PrzesunPacMana();
         g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
 /*
-        ArrayList<Pole> path = new ArrayList<Pole>();
-        path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
+        //ArrayList<Pole> path = new ArrayList<Pole>();
+        //path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
         for (int x = 0; x < szerokoscPlanszy; x++) {
             for (int y = 0; y < wysokoscPlanszy; y++) {
-                if (plansza[x][y].czyDaSieWejsc)
+                if (plansza[x][y].getCzyDaSieWejsc())
                     g.drawImage(dobre.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
                 else
                     g.drawImage(zle.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
-                if (path.contains(plansza[x][y]))
-                    g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
+                //if (path.contains(plansza[x][y]))
+                   // g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
             }
         }
-        */
+*/
         g.drawImage(czerwonyDuszek.getImage(), DuszekAR.get(0).getPozXPixelduszka() * skala, DuszekAR.get(0).getPozYPixelduszka() * skala, (DuszekAR.get(0).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(0).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
         try {
             Thread.sleep(33);
@@ -87,9 +86,9 @@ public class Panel extends JPanel implements KeyListener {
         }
         repaint();
     }
-
-    public static void PrzesunPacMana(){
 /*
+    public static void PrzesunPacMana(){
+
         switch (pacman.getKierunekAktualny()) {
             case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + PacMan.PredkoscRuchuPacMana);}
@@ -100,9 +99,9 @@ public class Panel extends JPanel implements KeyListener {
             case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% rozmiarPola > 2)
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() - PacMan.PredkoscRuchuPacMana);}
 
-        }*/
+        }
     }
-
+*/
 
     @Override
     public void keyTyped(KeyEvent e) {

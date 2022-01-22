@@ -66,6 +66,7 @@ public class Main {
                     case 5:
                         plansza[x][y] = new Pole(Pole.RodzajPola.PUSTE, true, false, x, y);
                         break;
+                    case 0:
                     case 6:
                         plansza[x][y] = new Pole(Pole.RodzajPola.PUSTE, false, false, x, y);
                         break;

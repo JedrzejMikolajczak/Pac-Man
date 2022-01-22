@@ -100,12 +100,24 @@ public class PacMan {
         zmienKierunek();
         switch (kierunekAktualny) {
             case PRAWO -> {
-                if (plansza[PozXPacMana + 1][PozYPacMana].getCzyDaSieWejsc())
-                    przejdzDoPola(PozXPacMana + 1, PozYPacMana);
+                if (Pole.czyPoleIstnieje(PozXPacMana + 1, PozYPacMana)) {
+                    if (plansza[PozXPacMana + 1][PozYPacMana].getCzyDaSieWejsc())
+                        przejdzDoPola(PozXPacMana + 1, PozYPacMana);
+                }
+                else {
+                    PozXPacMana = 0;
+                    PozXPixelPacMana = 0;
+                }
             }
             case LEWO -> {
-                if (plansza[PozXPacMana - 1][PozYPacMana].getCzyDaSieWejsc())
-                    przejdzDoPola(PozXPacMana - 1, PozYPacMana);
+                if (Pole.czyPoleIstnieje(PozXPacMana - 1, PozYPacMana)) {
+                    if (plansza[PozXPacMana - 1][PozYPacMana].getCzyDaSieWejsc())
+                        przejdzDoPola(PozXPacMana - 1, PozYPacMana);
+                }
+                else {
+                    PozXPacMana = szerokoscPlanszy - 1;
+                    PozXPixelPacMana = (szerokoscPlanszy - 1) * rozmiarPola;
+                }
             }
             case GORA -> {
                 if (plansza[PozXPacMana][PozYPacMana - 1].getCzyDaSieWejsc())

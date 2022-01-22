@@ -71,7 +71,6 @@ public class Duszek {
         if (sciezka.get(0).xSiatka * 16 == PozXPixelduszka && sciezka.get(0).ySiatka * 16 == PozYPixelduszka)
             sciezka.remove(0);
         przejdzDoPola(sciezka.get(0).xSiatka, sciezka.get(0).ySiatka);
-        System.out.println(PozYPixelduszka);
     }
 
     public static void ruszDuszkami(){

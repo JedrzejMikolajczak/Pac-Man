@@ -34,6 +34,8 @@ public class Pole {
             czyDaSieWejsc = true;
         else
             czyDaSieWejsc = false;
+        if (planszaWartosci[xPola][yPola] == 0)
+            czyDaSieWejsc = false;
         kierunki = new ArrayList<>();
         xSiatka = xPola;
         ySiatka = yPola;
@@ -61,6 +63,13 @@ public class Pole {
             }
         }
     }
+
+    /*public int[] znajdzWolnePole(){
+        if (czyDaSieWejsc)
+            return new int[] {xSiatka, ySiatka};
+
+        return new int[1];
+    }*/
 
     public static Boolean czyPoleIstnieje(int x, int y) {
         if (x >= 0 && y >= 0 && x < szerokoscPlanszy && y < wysokoscPlanszy)
