@@ -63,7 +63,7 @@ public class Panel extends JPanel implements KeyListener {
             g.drawLine(0, i*skala*rozmiarPola,szerokoscPlanszy*rozmiarPola*skala, i*rozmiarPola*skala);
         }
 
-        PrzesunPacMana();
+        //PrzesunPacMana();
         g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
 /*
         ArrayList<Pole> path = new ArrayList<Pole>();
@@ -89,8 +89,8 @@ public class Panel extends JPanel implements KeyListener {
     }
 
     public static void PrzesunPacMana(){
-
-        switch (pacman.getKierunek()) {
+/*
+        switch (pacman.getKierunekAktualny()) {
             case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + PacMan.PredkoscRuchuPacMana);}
             case LEWO -> {if(plansza[pacman.getPozXPacMana() - 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
@@ -100,7 +100,7 @@ public class Panel extends JPanel implements KeyListener {
             case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% rozmiarPola > 2)
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() - PacMan.PredkoscRuchuPacMana);}
 
-        }
+        }*/
     }
 
 
@@ -113,24 +113,16 @@ public class Panel extends JPanel implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyCode()) {
             case KeyEvent.VK_D:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.PRAWO)) {
-                    pacman.setKierunek(Kierunek.PRAWO);
-                }
+                pacman.setKierunekNastepny(Kierunek.PRAWO);
                 break;
             case KeyEvent.VK_A:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.LEWO)) {
-                    pacman.setKierunek(Kierunek.LEWO);
-                }
+                pacman.setKierunekNastepny(Kierunek.LEWO);
                 break;
             case KeyEvent.VK_W:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.GORA)) {
-                    pacman.setKierunek(Kierunek.GORA);
-                }
+                pacman.setKierunekNastepny(Kierunek.GORA);
                 break;
             case KeyEvent.VK_S:
-                if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana()].getKierunki().contains(Kierunek.DOL)) {
-                    pacman.setKierunek(Kierunek.DOL);
-                }
+                pacman.setKierunekNastepny(Kierunek.DOL);
                 break;
         }
 

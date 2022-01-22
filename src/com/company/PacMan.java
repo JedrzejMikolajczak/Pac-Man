@@ -1,27 +1,121 @@
 package com.company;
 import static com.company.Main.*;
-import static com.company.Duszek.*;
 
 public class PacMan {
-    private static int PozXPacMana;
-    private static int PozYPacMana;
+    private int PozXPacMana;
+    private int PozYPacMana;
     private static int Punkty;
 
-    static int PredkoscRuchuPacMana = 3;
+    private int PredkoscRuchuPacMana;
 
     private int PozXPixelPacMana;
     private int PozYPixelPacMana;
 
 
-    Kierunek kierunek;
+    private Kierunek kierunekAktualny;
+    private Kierunek kierunekNastepny;
 
 
-    public PacMan(int pozXPixelPacMana, int pozYPixelPacMana, Kierunek kierunek) {
+    public PacMan(int pozXPixelPacMana, int pozYPixelPacMana) {
         PozXPixelPacMana = pozXPixelPacMana;
         PozYPixelPacMana = pozYPixelPacMana;
         PozXPacMana = pozXPixelPacMana/ rozmiarPola;
         PozYPacMana = pozYPixelPacMana/ rozmiarPola;
-        this.kierunek = kierunek;
+        kierunekAktualny = Kierunek.PRAWO;
+        kierunekNastepny = kierunekAktualny;
+        PredkoscRuchuPacMana = 1;
+    }
+
+    private void zmienKierunek(){
+        if (kierunekAktualny == Kierunek.PRAWO || kierunekAktualny == Kierunek.LEWO){
+            //Poziomy
+            if (kierunekNastepny == Kierunek.PRAWO && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.PRAWO)){
+                kierunekAktualny = kierunekNastepny;
+            }
+            if (kierunekNastepny == Kierunek.LEWO && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.LEWO)){
+                kierunekAktualny = kierunekNastepny;
+            }
+
+            if (kierunekNastepny == Kierunek.DOL && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.DOL)){
+                if (PozXPixelPacMana % rozmiarPola == 0)
+                {
+                    kierunekAktualny = kierunekNastepny;
+                }
+            }
+            if (kierunekNastepny == Kierunek.GORA && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.GORA)){
+                if (PozXPixelPacMana % rozmiarPola == 0)
+                {
+                    kierunekAktualny = kierunekNastepny;
+                }
+            }
+
+        }else {
+            //Pionowy
+
+            if (kierunekNastepny == Kierunek.DOL && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.DOL)){
+                kierunekAktualny = kierunekNastepny;
+            }
+            if (kierunekNastepny == Kierunek.GORA && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.GORA)){
+                kierunekAktualny = kierunekNastepny;
+            }
+
+            if (kierunekNastepny == Kierunek.PRAWO && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.PRAWO)){
+                if (PozYPixelPacMana % rozmiarPola == 0)
+                {
+                    kierunekAktualny = kierunekNastepny;
+                }
+            }
+            if (kierunekNastepny == Kierunek.LEWO && plansza[PozXPacMana][PozYPacMana].getKierunki().contains(Kierunek.LEWO)){
+                if (PozYPixelPacMana % rozmiarPola == 0)
+                {
+                    kierunekAktualny = kierunekNastepny;
+                }
+            }
+        }
+    }
+
+    private void przejdzDoPola(int x, int y) {
+        int roznicaX = x * rozmiarPola - PozXPixelPacMana;
+        int roznicaY = y * rozmiarPola - PozYPixelPacMana;
+        if (roznicaX != 0) {
+            if (roznicaX > 0)
+                PozXPixelPacMana += PredkoscRuchuPacMana;
+            else
+                PozXPixelPacMana -= PredkoscRuchuPacMana;
+        } else if (roznicaY != 0) {
+            if (roznicaY > 0)
+                PozYPixelPacMana += PredkoscRuchuPacMana;
+            else
+                PozYPixelPacMana -= PredkoscRuchuPacMana;
+        }
+        if (PozXPixelPacMana%rozmiarPola == 0){
+            PozXPacMana = PozXPixelPacMana/rozmiarPola;
+        }
+        if (PozYPixelPacMana%rozmiarPola == 0){
+            PozYPacMana = PozYPixelPacMana/rozmiarPola;
+        }
+    }
+
+    public void rusz(){
+        zmienKierunek();
+        switch (kierunekAktualny) {
+            case PRAWO -> {
+                if (plansza[PozXPacMana + 1][PozYPacMana].getCzyDaSieWejsc())
+                    przejdzDoPola(PozXPacMana + 1, PozYPacMana);
+            }
+            case LEWO -> {
+                if (plansza[PozXPacMana - 1][PozYPacMana].getCzyDaSieWejsc())
+                    przejdzDoPola(PozXPacMana - 1, PozYPacMana);
+            }
+            case GORA -> {
+                if (plansza[PozXPacMana][PozYPacMana - 1].getCzyDaSieWejsc())
+                    przejdzDoPola(PozXPacMana, PozYPacMana - 1);
+            }
+            case DOL -> {
+                if (plansza[PozXPacMana][PozYPacMana + 1].getCzyDaSieWejsc())
+                    przejdzDoPola(PozXPacMana, PozYPacMana + 1);
+            }
+        }
     }
 
     public int getPozXPacMana() { return PozXPacMana; }
@@ -46,15 +140,19 @@ public class PacMan {
         PozYPacMana = PozYPixelPacMana / rozmiarPola;
     }
 
-    public Kierunek getKierunek() {
-        return kierunek;
+    public Kierunek getKierunekNastepny() {
+        return kierunekNastepny;
     }
 
-    public void setKierunek(Kierunek kierunek) {
-        this.kierunek = kierunek;
+    public void setKierunekNastepny(Kierunek kierunek) {
+        this.kierunekNastepny = kierunek;
     }
 
-    public static void PunktyMetod()
+    public Kierunek getKierunekAktualny() {
+        return kierunekAktualny;
+    }
+
+    public void PunktyMetod()
     {
         if(plansza[PozXPacMana][PozYPacMana].getCzyKropka()) {Punkty++;}
     }

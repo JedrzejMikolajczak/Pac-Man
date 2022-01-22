@@ -47,8 +47,13 @@ public class Duszek {
             else
                 PozYPixelduszka -= predkosc;
         }
-        PozXduszka = PozXPixelduszka/rozmiarPola;
-        PozYduszka = PozYPixelduszka/rozmiarPola;
+
+        if (PozXPixelduszka%rozmiarPola == 0){
+            PozXduszka = PozXPixelduszka/rozmiarPola;
+        }
+        if (PozYPixelduszka%rozmiarPola == 0){
+            PozYduszka = PozYPixelduszka/rozmiarPola;
+        }
 
         if (roznicaX > 0 && roznicaY == 0)
             kierunek = Kierunek.PRAWO;
@@ -63,9 +68,10 @@ public class Duszek {
     public void idzDoCelu(ArrayList<Pole> sciezka){
         if (sciezka.size() == 0)
             return;
-        if (sciezka.get(0).xSiatka * 32 == PozXduszka && sciezka.get(0).ySiatka * 32 == PozYduszka)
+        if (sciezka.get(0).xSiatka * 16 == PozXPixelduszka && sciezka.get(0).ySiatka * 16 == PozYPixelduszka)
             sciezka.remove(0);
         przejdzDoPola(sciezka.get(0).xSiatka, sciezka.get(0).ySiatka);
+        System.out.println(PozYPixelduszka);
     }
 
     public static void ruszDuszkami(){

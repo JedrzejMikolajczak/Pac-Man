@@ -24,7 +24,7 @@ public class Main {
     public static JFrame gra;
     public static Panel panel;
 
-    public static PacMan pacman = new PacMan(16, 16, Kierunek.PRAWO);
+    public static PacMan pacman = new PacMan(16, 16);
 
     public static void ReadFromFile() throws FileNotFoundException {
         /* 1- dół prawo
@@ -145,6 +145,7 @@ public class Main {
         while (true){
             //Update
             Duszek.ruszDuszkami();
+            pacman.rusz();
             try {
                 Thread.sleep(16);
             } catch (InterruptedException ex) {
