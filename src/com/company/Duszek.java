@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 import static com.company.Main.*;
+import static com.company.Main.pacman;
 
 public class Duszek {
 

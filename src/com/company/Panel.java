@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import static com.company.Main.*;
 
@@ -25,6 +26,7 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon dobre = new ImageIcon("src/Grafika/dobre.png");
     ImageIcon zle = new ImageIcon("src/Grafika/zle.png");
     ImageIcon sciezka = new ImageIcon("src/Grafika/path.png");
+    //public static ArrayList<Pole> path;
 
     public Panel(){
         addKeyListener(this);
@@ -64,20 +66,21 @@ public class Panel extends JPanel implements KeyListener {
         }
 
         g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
-/*
+
         //ArrayList<Pole> path = new ArrayList<Pole>();
         //path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
-        for (int x = 0; x < szerokoscPlanszy; x++) {
+        /*for (int x = 0; x < szerokoscPlanszy; x++) {
             for (int y = 0; y < wysokoscPlanszy; y++) {
                 if (plansza[x][y].getCzyDaSieWejsc())
                     g.drawImage(dobre.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
                 else
                     g.drawImage(zle.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
+                //if (path!=null)
                 //if (path.contains(plansza[x][y]))
-                   // g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
+                 //   g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
             }
-        }
-*/
+        }*/
+
         g.drawImage(czerwonyDuszek.getImage(), DuszekAR.get(0).getPozXPixelduszka() * skala, DuszekAR.get(0).getPozYPixelduszka() * skala, (DuszekAR.get(0).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(0).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
         try {
             Thread.sleep(33);
