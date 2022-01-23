@@ -91,7 +91,6 @@ public class Panel extends JPanel implements KeyListener {
     }
 /*
     public static void PrzesunPacMana(){
-
         switch (pacman.getKierunekAktualny()) {
             case PRAWO -> {if(plansza[pacman.getPozXPacMana() + 1][pacman.getPozYPacMana()].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozXPixelPacMana()% rozmiarPola > 1)
                 pacman.setPozXPixelPacMana(pacman.getPozXPixelPacMana() + PacMan.PredkoscRuchuPacMana);}
@@ -101,7 +100,6 @@ public class Panel extends JPanel implements KeyListener {
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() + PacMan.PredkoscRuchuPacMana);}
             case GORA -> {if(plansza[pacman.getPozXPacMana()][pacman.getPozYPacMana() - 1].getRodzajPola() == Pole.RodzajPola.PUSTE || pacman.getPozYPixelPacMana()% rozmiarPola > 2)
                 pacman.setPozYPixelPacMana(pacman.getPozYPixelPacMana() - PacMan.PredkoscRuchuPacMana);}
-
         }
     }
 */

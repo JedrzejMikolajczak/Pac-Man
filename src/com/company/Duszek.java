@@ -74,11 +74,13 @@ public class Duszek {
         przejdzDoPola(sciezka.get(0).xSiatka, sciezka.get(0).ySiatka);
     }
 
+
     public static void ruszDuszkami(){
         for (Duszek duszek : DuszekAR) {
             switch (duszek.jakiDuszek){
                 case CZERWONY -> {
-                    ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), pacman.getPozXPacMana(), pacman.getPozYPacMana());
+                    int[] tablica = Pole.znajdzWolnePole(pacman.getPozXPacMana(),pacman.getPozYPacMana());
+                    ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
                     duszek.idzDoCelu(sciezka);
                 }
                 case POMARANCZOWY -> {
@@ -88,7 +90,29 @@ public class Duszek {
 
                 }
                 case ROZOWY -> {
+                    switch(pacman.getKierunekAktualny()) {
+                        case PRAWO -> {
+                            int[] tablica = Pole.znajdzWolnePole(pacman.getPozXPacMana() + 4,pacman.getPozYPacMana());
+                            ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
+                            duszek.idzDoCelu(sciezka);
+                        }
+                        case LEWO -> {
+                            int[] tablica = Pole.znajdzWolnePole(pacman.getPozXPacMana() - 4, pacman.getPozYPacMana());
+                            ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
+                            duszek.idzDoCelu(sciezka);
+                        }
+                        case DOL -> {
+                            int[] tablica = Pole.znajdzWolnePole(pacman.getPozXPacMana(), pacman.getPozYPacMana() + 4);
+                            ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
+                            duszek.idzDoCelu(sciezka);
+                        }
+                        case GORA -> {
+                            int[] tablica = Pole.znajdzWolnePole(pacman.getPozXPacMana(), pacman.getPozYPacMana() - 4);
+                            ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
+                            duszek.idzDoCelu(sciezka);
+                        }
 
+                    }
                 }
             }
         }
