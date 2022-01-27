@@ -13,7 +13,7 @@ public class Pathfinding {
     private static ArrayList<Pole> otwartySet;
     private static HashSet<Pole> zamknietySet;
 
-    static ArrayList<Pole> znajdzSciezke(int startX, int startY, int celX, int celY){
+    public static ArrayList<Pole> znajdzSciezke(int startX, int startY, int celX, int celY, Kierunek kierunek){
 
         poczatkowePole = plansza[startX][startY];
         koncowePole = plansza[celX][celY];
@@ -37,6 +37,8 @@ public class Pathfinding {
                 return oddtworzSiezke();
             }
             for (Pole sasiad : getSasiadow(aktualnePole)) {
+                if (sasiadPrzeciwnyDoKierunku(sasiad, kierunek, startX, startY))
+                    continue;
                 if (!sasiad.getCzyDaSieWejsc() || zamknietySet.contains(sasiad))
                     continue;
                 int nowyKosztRuchuDoSasiada = aktualnePole.gCost + getOdleglosc(aktualnePole, sasiad);
@@ -54,7 +56,7 @@ public class Pathfinding {
         return new ArrayList<Pole>();
     }
 
-    static ArrayList<Pole> oddtworzSiezke() {
+    private static ArrayList<Pole> oddtworzSiezke() {
         ArrayList<Pole> sciezka = new ArrayList<Pole>();
         Pole aktualnePole = koncowePole;
 
@@ -66,10 +68,51 @@ public class Pathfinding {
         return sciezka;
     }
 
-    static int getOdleglosc(Pole poleA, Pole poleB) {
+    private static int getOdleglosc(Pole poleA, Pole poleB) {
         int dstX = Math.abs(poleA.xSiatka - poleB.xSiatka);
         int dstY = Math.abs(poleA.ySiatka - poleB.ySiatka);
 
         return 10 * (dstX + dstY);
+    }
+
+
+    private static ArrayList<Pole> getSasiadow(Pole pole) {
+        ArrayList<Pole> sasiedzi = new ArrayList<>();
+        for (int x = -1; x <= 1; x++) {
+            for (int y = -1; y <= 1; y++) {
+                if (x == 0 && y == 0 || (x != 0 && y != 0))
+                    continue;
+
+                int sprawdzX = pole.xSiatka + x;
+                int sprawdzY = pole.ySiatka + y;
+
+                if (Pole.czyPoleIstnieje(sprawdzX, sprawdzY)) {
+                    sasiedzi.add(plansza[sprawdzX][sprawdzY]);
+                }
+            }
+        }
+        return sasiedzi;
+    }
+
+    private static Boolean sasiadPrzeciwnyDoKierunku(Pole sasiad, Kierunek kierunek, int startX, int startY){
+        switch (kierunek){
+            case PRAWO -> {
+                if (sasiad.xSiatka == startX - 1 && sasiad.ySiatka == startY)
+                    return true;
+            }
+            case LEWO -> {
+                if (sasiad.xSiatka == startX + 1 && sasiad.ySiatka == startY)
+                    return true;
+            }
+            case DOL -> {
+                if (sasiad.xSiatka == startX && sasiad.ySiatka == startY - 1)
+                    return true;
+            }
+            case GORA -> {
+                if (sasiad.xSiatka == startX && sasiad.ySiatka == startY + 1)
+                    return true;
+            }
+        }
+        return false;
     }
 }

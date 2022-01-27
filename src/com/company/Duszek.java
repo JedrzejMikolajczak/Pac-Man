@@ -32,11 +32,13 @@ public class Duszek {
         PozYPixelduszka = rozmiarPola*1;
         PozXduszka = PozXPixelduszka/rozmiarPola;
         PozYduszka = PozYPixelduszka/rozmiarPola;
+        kierunek = Kierunek.PRAWO;
     }
 
     private void przejdzDoPola(int x, int y) {
         int roznicaX = x * rozmiarPola - PozXPixelduszka;
         int roznicaY = y * rozmiarPola - PozYPixelduszka;
+
         if (roznicaX != 0) {
             if (roznicaX > 0)
                 PozXPixelduszka += predkosc;
@@ -81,7 +83,9 @@ public class Duszek {
                 case CZERWONY -> {
                     //int[] tablica = Pole.znajdzWolnePole(pacman.getPozXPacMana(),pacman.getPozYPacMana());
                     //ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
-                    ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), pacman.getPozXPacMana(),pacman.getPozYPacMana());
+                    duszek.celX = pacman.getPozXPacMana();
+                    duszek.celY = pacman.getPozYPacMana();
+                    ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), duszek.celX, duszek.getCelY(), duszek.kierunek);
                     duszek.idzDoCelu(sciezka);
                 }
                 case POMARANCZOWY -> {
@@ -106,7 +110,9 @@ public class Duszek {
                             tablica = Pole.znajdzWolnePole(pacman.getPozXPacMana(), pacman.getPozYPacMana() - 4);
                         }
                     }
-                    ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
+                    duszek.celX = tablica[0];
+                    duszek.celY = tablica[1];
+                    ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), duszek.celX, duszek.celY, duszek.kierunek);
                     duszek.idzDoCelu(sciezka);
                 }
             }

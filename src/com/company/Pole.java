@@ -66,7 +66,7 @@ public class Pole {
 
     public static int[] znajdzWolnePole(int xSiatka, int ySiatka) {
         int odlegloscOdPola = 1;
-        int dystansNajlepszy = 10000;
+        double dystansNajlepszy = 10000;
         int xPola = -1;
         int yPola = -1;
 
@@ -76,7 +76,7 @@ public class Pole {
         while (xPola == -1 && yPola == -1) {
             for (int x = -odlegloscOdPola; x <= odlegloscOdPola; x++) {
                 if (czyPoleIstnieje(xSiatka + x, ySiatka - odlegloscOdPola) && plansza[xSiatka + x][ySiatka - odlegloscOdPola].getCzyDaSieWejsc()) {
-                    int dystans = (int) GetDistance(xSiatka, ySiatka, xSiatka + x, ySiatka - odlegloscOdPola);
+                    double dystans = GetDistance(xSiatka, ySiatka, xSiatka + x, ySiatka - odlegloscOdPola);
                     if (dystans < dystansNajlepszy) {
                         xPola = xSiatka + x;
                         yPola = ySiatka - odlegloscOdPola;
@@ -86,7 +86,7 @@ public class Pole {
             }
             for (int x = -odlegloscOdPola; x <= odlegloscOdPola; x++) {
                 if (czyPoleIstnieje(xSiatka + x, ySiatka + odlegloscOdPola) && plansza[xSiatka + x][ySiatka + odlegloscOdPola].getCzyDaSieWejsc()) {
-                    int dystans = (int) GetDistance(xSiatka, ySiatka, xSiatka + x, ySiatka + odlegloscOdPola);
+                    double dystans = GetDistance(xSiatka, ySiatka, xSiatka + x, ySiatka + odlegloscOdPola);
                     if (dystans < dystansNajlepszy) {
                         xPola = xSiatka + x;
                         yPola = ySiatka + odlegloscOdPola;
@@ -96,7 +96,7 @@ public class Pole {
             }
             for (int y = -odlegloscOdPola; y <= odlegloscOdPola; y++) {
                 if (czyPoleIstnieje(xSiatka - odlegloscOdPola, ySiatka + y) && plansza[xSiatka - odlegloscOdPola][ySiatka + y].getCzyDaSieWejsc()) {
-                    int dystans = (int) GetDistance(xSiatka, ySiatka, xSiatka - odlegloscOdPola, ySiatka + y);
+                    double dystans = GetDistance(xSiatka, ySiatka, xSiatka - odlegloscOdPola, ySiatka + y);
                     if (dystans < dystansNajlepszy) {
                         xPola = xSiatka - odlegloscOdPola;
                         yPola = ySiatka + y;
@@ -106,7 +106,7 @@ public class Pole {
             }
             for (int y = -odlegloscOdPola; y <= odlegloscOdPola; y++) {
                 if (czyPoleIstnieje(xSiatka + odlegloscOdPola, ySiatka + y) && plansza[xSiatka + odlegloscOdPola][ySiatka + y].getCzyDaSieWejsc()) {
-                    int dystans = (int) GetDistance(xSiatka, ySiatka, xSiatka + odlegloscOdPola, ySiatka + y);
+                    double dystans = GetDistance(xSiatka, ySiatka, xSiatka + odlegloscOdPola, ySiatka + y);
                     if (dystans < dystansNajlepszy) {
                         xPola = xSiatka + odlegloscOdPola;
                         yPola = ySiatka + y;
