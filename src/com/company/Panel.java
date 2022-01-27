@@ -26,6 +26,11 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon niebieskiDuszek = new ImageIcon("src/Grafika/niebieskiDuszek.png");
     ImageIcon rozowyDuszek = new ImageIcon("src/Grafika/rozowyDuszek.png");
 
+    ImageIcon oczyDol = new ImageIcon("src/Grafika/oczyDol.png");
+    ImageIcon oczyGora = new ImageIcon("src/Grafika/oczyGora.png");
+    ImageIcon oczyLewo = new ImageIcon("src/Grafika/oczyLewo.png");
+    ImageIcon oczyPrawo = new ImageIcon("src/Grafika/oczyPrawo.png");
+
     ImageIcon dobre = new ImageIcon("src/Grafika/dobre.png");
     ImageIcon zle = new ImageIcon("src/Grafika/zle.png");
     ImageIcon sciezka = new ImageIcon("src/Grafika/path.png");
@@ -38,6 +43,44 @@ public class Panel extends JPanel implements KeyListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        narysujMape(g);
+
+        //Siatka do debugowania
+        for (int i = 0; i < szerokoscPlanszy; i++) {
+            g.drawLine(i*skala*rozmiarPola,0,i*skala*rozmiarPola,wysokoscPlanszy*rozmiarPola*skala);
+        }
+        for (int i = 0; i < wysokoscPlanszy; i++) {
+            g.drawLine(0, i*skala*rozmiarPola,szerokoscPlanszy*rozmiarPola*skala, i*rozmiarPola*skala);
+        }
+
+        g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
+
+        narysujDuszki(g);
+
+        /*
+        //ArrayList<Pole> path = new ArrayList<Pole>();
+        //path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
+        for (int x = 0; x < szerokoscPlanszy; x++) {
+            for (int y = 0; y < wysokoscPlanszy; y++) {
+                if (plansza[x][y].getCzyDaSieWejsc())
+                    g.drawImage(dobre.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
+                else
+                    g.drawImage(zle.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
+                //if (path!=null)
+                //if (path.contains(plansza[x][y]))
+                 //   g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
+            }
+        }*/
+
+        try {
+            Thread.sleep(33);
+        } catch (InterruptedException ex) {
+            Thread.currentThread().interrupt();
+        }
+        repaint();
+    }
+
+    private void narysujMape(Graphics g){
         for (int y = 0; y < wysokoscPlanszy; y++) {
             for (int x = 0; x < szerokoscPlanszy; x++) {
                 switch (plansza[x][y].getRodzajPola()) {
@@ -59,43 +102,30 @@ public class Panel extends JPanel implements KeyListener {
                 }
             }
         }
-
-        //Siatka do debugowania
-        for (int i = 0; i < szerokoscPlanszy; i++) {
-            g.drawLine(i*skala*rozmiarPola,0,i*skala*rozmiarPola,wysokoscPlanszy*rozmiarPola*skala);
-        }
-        for (int i = 0; i < wysokoscPlanszy; i++) {
-            g.drawLine(0, i*skala*rozmiarPola,szerokoscPlanszy*rozmiarPola*skala, i*rozmiarPola*skala);
-        }
-
-        g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
-
-        g.drawImage(czerwonyDuszek.getImage(), DuszekAR.get(0).getPozXPixelduszka() * skala, DuszekAR.get(0).getPozYPixelduszka() * skala, (DuszekAR.get(0).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(0).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
-        g.drawImage(pomaranczowyDuszek.getImage(), DuszekAR.get(1).getPozXPixelduszka() * skala, DuszekAR.get(1).getPozYPixelduszka() * skala, (DuszekAR.get(1).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(1).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
-        g.drawImage(niebieskiDuszek.getImage(), DuszekAR.get(2).getPozXPixelduszka() * skala, DuszekAR.get(2).getPozYPixelduszka() * skala, (DuszekAR.get(2).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(2).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
-        g.drawImage(rozowyDuszek.getImage(), DuszekAR.get(3).getPozXPixelduszka() * skala, DuszekAR.get(3).getPozYPixelduszka() * skala, (DuszekAR.get(3).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(3).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
-
-        //ArrayList<Pole> path = new ArrayList<Pole>();
-        //path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
-        /*for (int x = 0; x < szerokoscPlanszy; x++) {
-            for (int y = 0; y < wysokoscPlanszy; y++) {
-                if (plansza[x][y].getCzyDaSieWejsc())
-                    g.drawImage(dobre.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
-                else
-                    g.drawImage(zle.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
-                //if (path!=null)
-                //if (path.contains(plansza[x][y]))
-                 //   g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
-            }
-        }*/
-
-        try {
-            Thread.sleep(33);
-        } catch (InterruptedException ex) {
-            Thread.currentThread().interrupt();
-        }
-        repaint();
     }
+    private int numerKlatkiDuszek = 0;
+    private void narysujDuszki(Graphics g) {
+        int n = 0;
+        numerKlatkiDuszek++;
+        if (numerKlatkiDuszek > 3)
+            n = 1;
+        if (numerKlatkiDuszek > 6)
+            numerKlatkiDuszek = 0;
+        g.drawImage(czerwonyDuszek.getImage(), DuszekAR.get(0).getPozXPixelduszka() * skala, DuszekAR.get(0).getPozYPixelduszka() * skala, (DuszekAR.get(0).getPozXPixelduszka() + rozmiarPola) * skala, (DuszekAR.get(0).getPozYPixelduszka() + rozmiarPola) * skala, rozmiarPola*n, 0, rozmiarPola*(n+1), rozmiarPola, null);
+        g.drawImage(pomaranczowyDuszek.getImage(), DuszekAR.get(1).getPozXPixelduszka() * skala, DuszekAR.get(1).getPozYPixelduszka() * skala, (DuszekAR.get(1).getPozXPixelduszka() + rozmiarPola) * skala, (DuszekAR.get(1).getPozYPixelduszka() + rozmiarPola) * skala, rozmiarPola*n, 0, rozmiarPola*(n+1), rozmiarPola, null);
+        g.drawImage(niebieskiDuszek.getImage(), DuszekAR.get(2).getPozXPixelduszka() * skala, DuszekAR.get(2).getPozYPixelduszka() * skala, (DuszekAR.get(2).getPozXPixelduszka() + rozmiarPola) * skala, (DuszekAR.get(2).getPozYPixelduszka() + rozmiarPola) * skala, rozmiarPola*n, 0, rozmiarPola*(n+1), rozmiarPola, null);
+        g.drawImage(rozowyDuszek.getImage(), DuszekAR.get(3).getPozXPixelduszka() * skala, DuszekAR.get(3).getPozYPixelduszka() * skala, (DuszekAR.get(3).getPozXPixelduszka() + rozmiarPola) * skala, (DuszekAR.get(3).getPozYPixelduszka() + rozmiarPola) * skala, rozmiarPola*n, 0, rozmiarPola*(n+1), rozmiarPola, null);
+
+        for (Duszek duszek : DuszekAR) {
+            switch (duszek.getKierunek()){
+                case PRAWO -> g.drawImage(oczyPrawo.getImage(), duszek.getPozXPixelduszka() * skala, duszek.getPozYPixelduszka() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
+                case LEWO -> g.drawImage(oczyLewo.getImage(), duszek.getPozXPixelduszka() * skala, duszek.getPozYPixelduszka() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
+                case GORA -> g.drawImage(oczyGora.getImage(), duszek.getPozXPixelduszka() * skala, duszek.getPozYPixelduszka() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
+                case DOL -> g.drawImage(oczyDol.getImage(), duszek.getPozXPixelduszka() * skala, duszek.getPozYPixelduszka() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
+            }
+        }
+    }
+
 /*
     public static void PrzesunPacMana(){
         switch (pacman.getKierunekAktualny()) {
