@@ -22,6 +22,9 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon pacmanpng = new ImageIcon("src/Grafika/pacman.png");
 
     ImageIcon czerwonyDuszek = new ImageIcon("src/Grafika/czerwonyDuszek.png");
+    ImageIcon pomaranczowyDuszek = new ImageIcon("src/Grafika/pomaranczowyDuszek.png");
+    ImageIcon niebieskiDuszek = new ImageIcon("src/Grafika/niebieskiDuszek.png");
+    ImageIcon rozowyDuszek = new ImageIcon("src/Grafika/rozowyDuszek.png");
 
     ImageIcon dobre = new ImageIcon("src/Grafika/dobre.png");
     ImageIcon zle = new ImageIcon("src/Grafika/zle.png");
@@ -67,6 +70,11 @@ public class Panel extends JPanel implements KeyListener {
 
         g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
 
+        g.drawImage(czerwonyDuszek.getImage(), DuszekAR.get(0).getPozXPixelduszka() * skala, DuszekAR.get(0).getPozYPixelduszka() * skala, (DuszekAR.get(0).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(0).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
+        g.drawImage(pomaranczowyDuszek.getImage(), DuszekAR.get(1).getPozXPixelduszka() * skala, DuszekAR.get(1).getPozYPixelduszka() * skala, (DuszekAR.get(1).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(1).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
+        g.drawImage(niebieskiDuszek.getImage(), DuszekAR.get(2).getPozXPixelduszka() * skala, DuszekAR.get(2).getPozYPixelduszka() * skala, (DuszekAR.get(2).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(2).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
+        g.drawImage(rozowyDuszek.getImage(), DuszekAR.get(3).getPozXPixelduszka() * skala, DuszekAR.get(3).getPozYPixelduszka() * skala, (DuszekAR.get(3).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(3).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
+
         //ArrayList<Pole> path = new ArrayList<Pole>();
         //path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
         /*for (int x = 0; x < szerokoscPlanszy; x++) {
@@ -81,7 +89,6 @@ public class Panel extends JPanel implements KeyListener {
             }
         }*/
 
-        g.drawImage(czerwonyDuszek.getImage(), DuszekAR.get(0).getPozXPixelduszka() * skala, DuszekAR.get(0).getPozYPixelduszka() * skala, (DuszekAR.get(0).getPozXPixelduszka()+rozmiarPola)*skala, (DuszekAR.get(0).getPozYPixelduszka()+rozmiarPola)*skala, 0, 0, rozmiarPola, rozmiarPola, null);
         try {
             Thread.sleep(33);
         } catch (InterruptedException ex) {

@@ -70,6 +70,9 @@ public class Pole {
         int xPola = -1;
         int yPola = -1;
 
+        if (czyPoleIstnieje(xSiatka, ySiatka) && plansza[xSiatka][ySiatka].czyDaSieWejsc)
+            return new int[] {xSiatka, ySiatka};
+
         while (xPola == -1 && yPola == -1) {
             for (int x = -odlegloscOdPola; x <= odlegloscOdPola; x++) {
                 if (czyPoleIstnieje(xSiatka + x, ySiatka - odlegloscOdPola) && plansza[xSiatka + x][ySiatka - odlegloscOdPola].getCzyDaSieWejsc()) {
