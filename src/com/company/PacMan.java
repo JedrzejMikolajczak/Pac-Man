@@ -128,6 +128,7 @@ public class PacMan {
                     przejdzDoPola(PozXPacMana, PozYPacMana + 1);
             }
         }
+        plansza[PozXPacMana][PozYPacMana].zjedzZawartosc();
     }
 
     public int getPozXPacMana() { return PozXPacMana; }

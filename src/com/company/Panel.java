@@ -20,6 +20,7 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon dolLewy = new ImageIcon("src/Grafika/dolLewy.png");
     ImageIcon dolPrawy = new ImageIcon("src/Grafika/dolPrawy.png");
     ImageIcon pacmanpng = new ImageIcon("src/Grafika/pacman.png");
+    ImageIcon pacmanFull = new ImageIcon("src/Grafika/pacmanFull.png");
 
     ImageIcon czerwonyDuszek = new ImageIcon("src/Grafika/czerwonyDuszek.png");
     ImageIcon pomaranczowyDuszek = new ImageIcon("src/Grafika/pomaranczowyDuszek.png");
@@ -53,9 +54,10 @@ public class Panel extends JPanel implements KeyListener {
             g.drawLine(0, i*skala*rozmiarPola,szerokoscPlanszy*rozmiarPola*skala, i*rozmiarPola*skala);
         }
 
-        g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
+        //g.drawImage(pacmanpng.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
 
         narysujDuszki(g);
+        narysujPacmana(g);
 
         /*
         //ArrayList<Pole> path = new ArrayList<Pole>();
@@ -103,6 +105,7 @@ public class Panel extends JPanel implements KeyListener {
             }
         }
     }
+
     private int numerKlatkiDuszek = 0;
     private void narysujDuszki(Graphics g) {
         int n = 0;
@@ -124,6 +127,29 @@ public class Panel extends JPanel implements KeyListener {
                 case DOL -> g.drawImage(oczyDol.getImage(), duszek.getPozXPixelduszka() * skala, duszek.getPozYPixelduszka() * skala, skala * rozmiarPola, skala * rozmiarPola, null);
             }
         }
+    }
+
+    private int numerKlatkiPacman = 0;
+    private void narysujPacmana(Graphics g){
+        int n = 0;
+        numerKlatkiPacman++;
+        if (numerKlatkiPacman > 2)
+            n = 1;
+        if (numerKlatkiPacman > 4)
+            n = 2;
+        if (numerKlatkiPacman > 6)
+            n = 3;
+        if (numerKlatkiPacman > 8)
+            numerKlatkiPacman = 0;
+
+        int kierunek = 0;
+        switch (pacman.getKierunekAktualny()){
+            case PRAWO -> kierunek = 0;
+            case LEWO -> kierunek = 1;
+            case DOL -> kierunek = 2;
+            case GORA -> kierunek = 3;
+        }
+        g.drawImage(pacmanFull.getImage(), pacman.getPozXPixelPacMana() * skala, pacman.getPozYPixelPacMana() * skala, (pacman.getPozXPixelPacMana() + rozmiarPola) * skala, (pacman.getPozYPixelPacMana() + rozmiarPola) * skala, rozmiarPola*n,rozmiarPola*kierunek,rozmiarPola*(n+1),rozmiarPola*(kierunek+1), null);
     }
 
 /*
