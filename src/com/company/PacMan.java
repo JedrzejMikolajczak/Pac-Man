@@ -11,7 +11,7 @@ public class PacMan {
     private int PozXPixelPacMana;
     private int PozYPixelPacMana;
 
-    private int IloscPkt;
+    public static int IloscPkt;
 
     private Kierunek kierunekAktualny;
     private Kierunek kierunekNastepny;
@@ -133,14 +133,13 @@ public class PacMan {
         switch(plansza[PozXPacMana][PozYPacMana].zjedzZawartosc())
         {
             case 1:
-                IloscPkt++;
+                IloscPkt+= 10;
                 break;
             case 2:
-                IloscPkt++;
+                IloscPkt+= 50;
                 //METODA NA BOOSTA
                 break;
         }
-        System.out.println(IloscPkt);
     }
 
     public int getPozXPacMana() { return PozXPacMana; }

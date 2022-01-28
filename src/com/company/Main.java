@@ -97,17 +97,18 @@ public class Main {
 
     public static double GetDistance(int x1, int y1, int x2, int y2){
         double a = ((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1));
+        a = Math.abs(a);
         return Math.sqrt(a);
     }
 
     public static void UtworzPanel(){
         gra = new JFrame();
         panel = new Panel();
-        punkty = new JLabel();
         gra.add(panel);
-        punkty.setBounds(0, 0 ,100 ,100);
+        punkty = new JLabel("0");
+        punkty.setBounds(-100, 1000 ,150 ,150);
         punkty.setForeground(Color.BLACK);
-        gra.add(punkty);
+        panel.add(punkty);
         //gra.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         gra.setSize(screenSize.width, screenSize.height);
@@ -120,6 +121,7 @@ public class Main {
         gra.addKeyListener(panel);
 
     }
+
 
     public static void main(String[] args) throws FileNotFoundException {
         ReadFromFile();

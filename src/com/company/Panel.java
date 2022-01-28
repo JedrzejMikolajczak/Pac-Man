@@ -8,6 +8,7 @@ import java.sql.Struct;
 import java.util.ArrayList;
 
 import static com.company.Main.*;
+import static com.company.PacMan.*;
 
 public class Panel extends JPanel implements KeyListener {
 
@@ -38,7 +39,7 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon sciezka = new ImageIcon("src/Grafika/path.png");
     public static ArrayList<Pole> path;
 
-    private String PktTabela;
+
 
 
     public Panel(){
@@ -83,7 +84,8 @@ public class Panel extends JPanel implements KeyListener {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
-        PktTabela = punkty.toString();
+
+        punkty.setText(Integer.toString(IloscPkt));
         repaint();
     }
 
