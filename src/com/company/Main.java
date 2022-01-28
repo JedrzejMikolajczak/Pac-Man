@@ -17,12 +17,14 @@ public class Main {
     public static final int rozmiarPola = 16;
     public static final int skala = 2;
 
+
     public static ArrayList<Duszek> DuszekAR = new ArrayList<>();
 
     public static int[][] planszaWartosci = new int[szerokoscPlanszy][wysokoscPlanszy];
     public static Pole[][] plansza = new Pole[szerokoscPlanszy][wysokoscPlanszy];
     public static JFrame gra;
     public static Panel panel;
+    public static JLabel punkty;
 
     public static PacMan pacman = new PacMan(16, 16);
 
@@ -101,7 +103,11 @@ public class Main {
     public static void UtworzPanel(){
         gra = new JFrame();
         panel = new Panel();
+        punkty = new JLabel();
         gra.add(panel);
+        punkty.setBounds(0, 0 ,100 ,100);
+        punkty.setForeground(Color.BLACK);
+        gra.add(punkty);
         //gra.setExtendedState(JFrame.MAXIMIZED_BOTH);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         gra.setSize(screenSize.width, screenSize.height);
@@ -112,6 +118,7 @@ public class Main {
         gra.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gra.setVisible(true);
         gra.addKeyListener(panel);
+
     }
 
     public static void main(String[] args) throws FileNotFoundException {

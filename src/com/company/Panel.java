@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.Struct;
 import java.util.ArrayList;
 
 import static com.company.Main.*;
@@ -36,6 +37,9 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon zle = new ImageIcon("src/Grafika/zle.png");
     ImageIcon sciezka = new ImageIcon("src/Grafika/path.png");
     public static ArrayList<Pole> path;
+
+    private String PktTabela;
+
 
     public Panel(){
         addKeyListener(this);
@@ -79,6 +83,7 @@ public class Panel extends JPanel implements KeyListener {
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
         }
+        PktTabela = punkty.toString();
         repaint();
     }
 
