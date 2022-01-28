@@ -120,7 +120,30 @@ public class Duszek {
                         }
                     }
                     case NIEBIESKI -> {
-
+                        int pacmanCelX = 0;
+                        int pacmanCelY = 0;
+                        switch (pacman.getKierunekAktualny()) {
+                            case PRAWO -> {
+                                pacmanCelX = pacman.getPozXPacMana() + 2;
+                                pacmanCelY = pacman.getPozYPacMana();
+                            }
+                            case LEWO -> {
+                                pacmanCelX = pacman.getPozXPacMana() - 2;
+                                pacmanCelY = pacman.getPozYPacMana();
+                            }
+                            case DOL -> {
+                                pacmanCelX = pacman.getPozXPacMana();
+                                pacmanCelY = pacman.getPozYPacMana() + 2;
+                            }
+                            case GORA -> {
+                                pacmanCelX = pacman.getPozXPacMana();
+                                pacmanCelY = pacman.getPozYPacMana() - 2;
+                            }
+                        }
+                        int[] tablica = new int[2];
+                        tablica = Pole.znajdzWolnePole(2 * pacmanCelX - DuszekAR.get(0).getPozXduszka(), 2 * pacmanCelY - DuszekAR.get(0).getPozYduszka());
+                        duszek.celX = tablica[0];
+                        duszek.celY = tablica[1];
                     }
                     case ROZOWY -> {
                         int[] tablica = new int[2];
@@ -143,6 +166,8 @@ public class Duszek {
                     }
                 }
                 duszek.sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), duszek.getCelX(), duszek.getCelY(), duszek.kierunek);
+                if (duszek.jakiDuszek == JakiDuszek.NIEBIESKI)
+                    Panel.path = duszek.sciezka;
             }
 
             duszek.idzDoCelu(duszek.sciezka);

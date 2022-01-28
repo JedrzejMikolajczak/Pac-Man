@@ -35,7 +35,7 @@ public class Panel extends JPanel implements KeyListener {
     ImageIcon dobre = new ImageIcon("src/Grafika/dobre.png");
     ImageIcon zle = new ImageIcon("src/Grafika/zle.png");
     ImageIcon sciezka = new ImageIcon("src/Grafika/path.png");
-    //public static ArrayList<Pole> path;
+    public static ArrayList<Pole> path;
 
     public Panel(){
         addKeyListener(this);
@@ -46,7 +46,7 @@ public class Panel extends JPanel implements KeyListener {
         super.paintComponent(g);
         narysujMape(g);
 
-        //Siatka do debugowania
+        // Siatka do debugowania
         for (int i = 0; i < szerokoscPlanszy; i++) {
             g.drawLine(i*skala*rozmiarPola,0,i*skala*rozmiarPola,wysokoscPlanszy*rozmiarPola*skala);
         }
@@ -59,18 +59,18 @@ public class Panel extends JPanel implements KeyListener {
         narysujDuszki(g);
         narysujPacmana(g);
 
-        /*
+        // Oznaczenie pól i jedna ścieżka
         //ArrayList<Pole> path = new ArrayList<Pole>();
         //path = Pathfinding.znajdzSciezke(1,1,szerokoscPlanszy-2, wysokoscPlanszy-3);
-        for (int x = 0; x < szerokoscPlanszy; x++) {
+        /*for (int x = 0; x < szerokoscPlanszy; x++) {
             for (int y = 0; y < wysokoscPlanszy; y++) {
                 if (plansza[x][y].getCzyDaSieWejsc())
                     g.drawImage(dobre.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
                 else
                     g.drawImage(zle.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
-                //if (path!=null)
-                //if (path.contains(plansza[x][y]))
-                 //   g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
+//                if (path!=null)
+//                    if (path.contains(plansza[x][y]))
+//                        g.drawImage(sciezka.getImage(), x * skala * rozmiarPola, y * skala * rozmiarPola, null);
             }
         }*/
 
