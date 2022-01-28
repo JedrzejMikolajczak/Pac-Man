@@ -108,10 +108,16 @@ public class Duszek {
                         //ArrayList<Pole> sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), tablica[0], tablica[1]);
                         duszek.celX = pacman.getPozXPacMana();
                         duszek.celY = pacman.getPozYPacMana();
-                        duszek.sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), duszek.celX, duszek.getCelY(), duszek.kierunek);
                     }
                     case POMARANCZOWY -> {
-
+                        if (GetDistance(pacman.getPozXPacMana(), pacman.getPozYPacMana(), duszek.getPozXduszka(), duszek.getPozYduszka()) >= 8){
+                            duszek.celX = pacman.getPozXPacMana();
+                            duszek.celY = pacman.getPozYPacMana();
+                        }
+                        else {
+                            duszek.celX = 1;
+                            duszek.celY = wysokoscPlanszy - 2;
+                        }
                     }
                     case NIEBIESKI -> {
 
@@ -134,9 +140,9 @@ public class Duszek {
                         }
                         duszek.celX = tablica[0];
                         duszek.celY = tablica[1];
-                        duszek.sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), duszek.celX, duszek.celY, duszek.kierunek);
                     }
                 }
+                duszek.sciezka = Pathfinding.znajdzSciezke(duszek.getPozXduszka(), duszek.getPozYduszka(), duszek.getCelX(), duszek.getCelY(), duszek.kierunek);
             }
 
             duszek.idzDoCelu(duszek.sciezka);
